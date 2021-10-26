@@ -93,10 +93,98 @@
 <command>
 	<!--$COMMAND-->
 </command>
+```
+
+### Command: Login (Session Management)
+
+```xml
+<login>
+	<!--$LOGIN-->
+</login>
+```
+
+### Command: Logout (Session Management)
+
+```xml
+<logout/>
+```
+
+### Command: Check (Query)
+
+```xml
+<check>
+	<!--$CHECK-->
+</check>
+```
+
+### Command: Info (Query)
+
+```xml
+<info>
+	<!--$INFO-->
+</info>
+```
+
+### Command: Poll (Query)
+
+```xml
+<poll op="ack|req" msgId="optional:message_id">
+	<!--$POLL-->
+</poll>
+```
+
+### Command: Transfer (Query)
+
+```xml
+<transfer op="query">
+	<!--$TRANSFER-->
+</transfer>
+```
+
+### Command: Create (Object Transform)
+
+```xml
+<create>
+	<!--$CREATE-->
+</create>
+```
+
+### Command: Delete (Object Transform)
+
+```xml
+<delete>
+	<!--$DELETE-->
+</delete>
+```
+
+### Command: Renew (Object Transform)
+
+```xml
+<renew>
+	<!--$RENEW-->
+</renew>
+```
+
+### Command: Transfer (Object Transform)
+
+```xml
+<transfer op="approve|cancel|query|reject|request">
+	<!--$TRANSFER-->
+</transfer>
+```
+
+### Command: Update (Object Transform)
+
+```xml
+<update>
+	<!--$UPDATE-->
+</update>
+```
 
 ## Format: Response
 
 ```xml
-<command>
+<response>
 	<!--$RESPONSE-->
-</command>
+</response>
+```
