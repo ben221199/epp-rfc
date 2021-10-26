@@ -6,6 +6,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
 	<!--$FORMAT-->
+	<extension>	<!--[OPTIONAL] Extension-->
+		<!--$EXTENSION-->
+	</extension>
 </epp>
 ```
 
@@ -91,7 +94,11 @@
 
 ```xml
 <command>
-	<!--$COMMAND-->
+	<!--[REQUIRED] $COMMAND-->
+	<extension>	<!--[OPTIONAL] Extension-->
+		<!--$EXTENSION-->
+	</extension>
+	<clTRID/>	<!--[OPTIONAL] Client Transaction ID-->
 </command>
 ```
 
@@ -185,6 +192,49 @@
 
 ```xml
 <response>
-	<!--$RESPONSE-->
+	<result code="required:4-digit-code"><!--[1-*] Result (One if success, else more possible)-->
+		<msg lang="optional:language"/><!--[REQUIRED] Message (default in English)-->
+		<value>		<!--[0-*] Value-->
+			<!--$VALUE-->
+		</value>
+		<extValue>	<!--[0-*] Extension Value-->
+			<value>		<!--[0-*] Value-->
+				<!--$VALUE-->
+			</value>
+			<reason lang="optional:language"/><!--[REQUIRED] Reason (default in English)-->
+		</extValue>
+	</result>
+	<msgQ count="required:count" id="required:id"><!--[OPTIONAL] Message Queue-->
+		<qDate/>	<!--[OPTIONAL during <poll>] Queue Date-->
+		<msg lange="optional:language"/><!--[OPTIONAL during <poll>] Queue Message-->
+	</msgQ>
+	<resData>	<!--[OPTIONAL] Response Data-->
+		<!--$RESDATA-->
+	</resData>
+	<extension>	<!--[OPTIONAL] Extension-->
+		<!--$EXTENSION-->
+	</extension>
+	<trID>
+		<clTRID/>	<!--[OPTIONAL] Client Transaction ID-->
+		<svTRID/>	<!--[REQUIRED] Server Transaction ID-->
+	</trID>
 </response>
 ```
+
+## Extension:
+
+Inside the `<extension>` it's up to the extension. You can do whatever you want, if it is at least:
+ - Valid XML
+ - Follows the EPP XSD Documents
+
+### Protocol Extension
+
+The `<extension>` element directly under the `<epp>` element.
+
+### Object Extension
+
+A element with custom namespace inside a `<check>`, `<info>`, etc. or inside `<resData>`.
+
+### Command-Response Extension
+
+The `<extension>` element directly under the `<command>` or `<response>` element.
