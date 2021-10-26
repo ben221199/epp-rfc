@@ -106,7 +106,19 @@
 
 ```xml
 <login>
-	<!--$LOGIN-->
+	<clID/>		<!--[REQUIRED] Client ID: The name of the client-->
+	<pw/>		<!--[REQUIRED] Password-->
+	<newPW/>	<!--[REQUIRED] New Password-->
+	<options>	<!--[REQUIRED] Options-->
+		<version/>	<!--[REQUIRED] Version-->
+		<lang/>		<!--[REQUIRED] Language-->
+	</options>
+	<svcs>		<!--[REQUIRED] Services-->
+		<objURI/>	<!--[1-*] Object URI: URIs of the objects managed by the server-->
+		<svcExtension>	<!--[OPTIONAL] Service Extension-->
+			<extURI/>	<!--[1-*] Extension URI: URIs of the extension objects managed by the server-->
+		</svcExtension>
+	</svcs>
 </login>
 ```
 
